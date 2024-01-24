@@ -4,6 +4,7 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.example.S3_fileUpDownLoad.Service.FileService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +29,15 @@ public class S3Config {
     - 에쎄스 키와 비밀 에쎼스키 을 저장하고 관리.
     - .withRegion으로 지역도 설정해줌.
      */
+
+    /*
+    AmazonS3Client의 인스턴스를 @Bean으로 등록.
+     return (AmazonS3Client) AmazonS3ClientBuilder.standard()
+                .withRegion(region)
+                .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
+                .build();
+                이게 등록된 것 임.
+     */
     @Bean
     public AmazonS3Client amazonS3Client() {
         BasicAWSCredentials awsCredentials= new BasicAWSCredentials(accessKey, secretKey);
@@ -36,4 +46,8 @@ public class S3Config {
                 .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
                 .build();
     }
+
+
+
+
 }

@@ -1,0 +1,4 @@
+spring:
+  redis:
+    host: DESKTOP-LL832F4
+    port: 6379
